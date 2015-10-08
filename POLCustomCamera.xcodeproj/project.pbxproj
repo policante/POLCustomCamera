@@ -14,6 +14,9 @@
 		1937591F1BC06B9E0084359C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1937591D1BC06B9E0084359C /* LaunchScreen.storyboard */; };
 		1937592A1BC06B9E0084359C /* POLCustomCameraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193759291BC06B9E0084359C /* POLCustomCameraTests.swift */; };
 		193759351BC06B9F0084359C /* POLCustomCameraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193759341BC06B9F0084359C /* POLCustomCameraUITests.swift */; };
+		193759441BC06F480084359C /* POLCameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193759431BC06F480084359C /* POLCameraManager.swift */; settings = {ASSET_TAGS = (); }; };
+		193759471BC080970084359C /* icon-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 193759461BC080970084359C /* icon-camera.png */; settings = {ASSET_TAGS = (); }; };
+		193759491BC093650084359C /* icon-change.png in Resources */ = {isa = PBXBuildFile; fileRef = 193759481BC093650084359C /* icon-change.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		193759301BC06B9F0084359C /* POLCustomCameraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = POLCustomCameraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		193759341BC06B9F0084359C /* POLCustomCameraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POLCustomCameraUITests.swift; sourceTree = "<group>"; };
 		193759361BC06B9F0084359C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		193759431BC06F480084359C /* POLCameraManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = POLCameraManager.swift; path = Manager/POLCameraManager.swift; sourceTree = "<group>"; };
+		193759461BC080970084359C /* icon-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-camera.png"; sourceTree = "<group>"; };
+		193759481BC093650084359C /* icon-change.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-change.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,8 @@
 		193759131BC06B9E0084359C /* POLCustomCamera */ = {
 			isa = PBXGroup;
 			children = (
+				193759451BC080810084359C /* Resource */,
+				193759421BC06F250084359C /* Manager */,
 				193759141BC06B9E0084359C /* AppDelegate.swift */,
 				193759161BC06B9E0084359C /* ViewController.swift */,
 				193759181BC06B9E0084359C /* Main.storyboard */,
@@ -123,6 +131,23 @@
 				193759361BC06B9F0084359C /* Info.plist */,
 			);
 			path = POLCustomCameraUITests;
+			sourceTree = "<group>";
+		};
+		193759421BC06F250084359C /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				193759431BC06F480084359C /* POLCameraManager.swift */,
+			);
+			name = Manager;
+			sourceTree = "<group>";
+		};
+		193759451BC080810084359C /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				193759461BC080970084359C /* icon-camera.png */,
+				193759481BC093650084359C /* icon-change.png */,
+			);
+			name = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +217,7 @@
 				TargetAttributes = {
 					193759101BC06B9E0084359C = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 99CUK56NBD;
 					};
 					193759241BC06B9E0084359C = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -230,7 +256,9 @@
 			files = (
 				1937591F1BC06B9E0084359C /* LaunchScreen.storyboard in Resources */,
 				1937591C1BC06B9E0084359C /* Assets.xcassets in Resources */,
+				193759471BC080970084359C /* icon-camera.png in Resources */,
 				1937591A1BC06B9E0084359C /* Main.storyboard in Resources */,
+				193759491BC093650084359C /* icon-change.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				193759171BC06B9E0084359C /* ViewController.swift in Sources */,
+				193759441BC06F480084359C /* POLCameraManager.swift in Sources */,
 				193759151BC06B9E0084359C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -398,10 +427,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Rodrigo Martins (3VTR95Q368)";
 				INFOPLIST_FILE = POLCustomCamera/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rpolicante.POLCustomCamera;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -409,10 +442,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Rodrigo Martins (3VTR95Q368)";
 				INFOPLIST_FILE = POLCustomCamera/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rpolicante.POLCustomCamera;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -483,6 +520,7 @@
 				1937593B1BC06B9F0084359C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1937593C1BC06B9F0084359C /* Build configuration list for PBXNativeTarget "POLCustomCameraTests" */ = {
 			isa = XCConfigurationList;
@@ -491,6 +529,7 @@
 				1937593E1BC06B9F0084359C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1937593F1BC06B9F0084359C /* Build configuration list for PBXNativeTarget "POLCustomCameraUITests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +538,7 @@
 				193759411BC06B9F0084359C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
