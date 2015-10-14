@@ -1,5 +1,5 @@
-# POLCustomCamera
-Create a custom camera using POLCustomCamera
+# POLCustomCamera in Swift 2
+Create a custom camera using POLCustomCamera in Swift 2
 
 ![POLCustomCamera preview](https://github.com/policante/POLCustomCamera/blob/master/preview.PNG "Preview")
 
