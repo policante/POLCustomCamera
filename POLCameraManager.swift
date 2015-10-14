@@ -56,19 +56,17 @@ class POLCameraManager : NSObject {
         self.session.sessionPreset = AVCaptureSessionPresetPhoto
         self.sessionQueue = dispatch_queue_create("POLCameraManager", DISPATCH_QUEUE_SERIAL)
         
-//        dispatch_async(self.sessionQueue) {
-            NSLog("beginConfiguration")
-            self.session.beginConfiguration()
-            NSLog("addInput")
-            self.addInput()
-            NSLog("addImageOutput")
-            self.addImageOutput()
-            NSLog("commitConfiguration")
-            self.session.commitConfiguration()
-            
-            NSLog("configFocusHandler")
-            self.configFocusHandler()
-//        }
+        NSLog("beginConfiguration")
+        self.session.beginConfiguration()
+        NSLog("addInput")
+        self.addInput()
+        NSLog("addImageOutput")
+        self.addImageOutput()
+        NSLog("commitConfiguration")
+        self.session.commitConfiguration()
+        
+        NSLog("configFocusHandler")
+        self.configFocusHandler()
     }
     
     deinit{
@@ -76,7 +74,7 @@ class POLCameraManager : NSObject {
     }
 
     //MARK: Manager
-    
+    //Running camera
     func startCamera(){
         NSLog("setupPreview")
         self.setupPreview()
@@ -86,12 +84,14 @@ class POLCameraManager : NSObject {
         }
     }
     
+    //Stop Camera
     func stopCamera(){
         dispatch_async(self.sessionQueue){
             self.session.stopRunning()
         }
     }
     
+    //Configure camera device input: .Back or .Front
     func setPositionCamera(position: DevicePosition){
         self.devicePosition = position
         dispatch_async(self.sessionQueue){
@@ -99,6 +99,7 @@ class POLCameraManager : NSObject {
         }
     }
     
+    //Check device has flash
     func hasFlash() -> Bool {
         if let device = self.device {
             return device.hasFlash
@@ -106,6 +107,7 @@ class POLCameraManager : NSObject {
         return false
     }
     
+    //Check device has Torch
     func hasTorch() -> Bool {
         if let device = self.device {
             return device.hasTorch
@@ -113,6 +115,7 @@ class POLCameraManager : NSObject {
         return false
     }
     
+    //Change torch: .On or .Off
     func toggleTorch() -> Bool {
         if self.hasTorch() {
             self.session.beginConfiguration()
@@ -137,6 +140,7 @@ class POLCameraManager : NSObject {
         return false
     }
     
+    //Change flash: .On or .Off
     func toggleFlash() -> Bool {
         if self.hasFlash() {
             self.session.beginConfiguration()
@@ -160,6 +164,7 @@ class POLCameraManager : NSObject {
         return false
     }
     
+    //configure video orientation
     func viewDidLayoutSubviews(){
 
         if let videoPreviewLayer = self.captureVideoPreviewLayer {
@@ -171,6 +176,7 @@ class POLCameraManager : NSObject {
         }
     }
     
+    //Change position camera: .Back or .Front
     func changePositionCamera(){
         switch devicePosition {
         case .Front:
@@ -184,6 +190,7 @@ class POLCameraManager : NSObject {
         }
     }
     
+    //Take a picture
     func takePhoto(completed: (image: UIImage?) -> Void){
         if let imageOutput = self.stillImageOutput {
             dispatch_async(self.sessionQueue, { () -> Void in
@@ -320,6 +327,7 @@ class POLCameraManager : NSObject {
         return captureDevice
     }
     
+    //Configure tap focus
     func onTap(gesture: UITapGestureRecognizer) {
         let tapPoint = gesture.locationInView(self.previewCamera)
         let focusPoint = CGPointMake(

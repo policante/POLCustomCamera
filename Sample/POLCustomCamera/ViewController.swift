@@ -17,27 +17,33 @@ class ViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        //Initialize POLCameraManager
         self.cameraManager = POLCameraManager(previewCamera: self.previewCamera)
+        //enable flash
         self.cameraManager?.toggleFlash()
         self.lastCapture.alpha = 0.0
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        //Running camera
         self.cameraManager?.startCamera()
     }
     
     override func viewDidDisappear(animated: Bool) {
+        //Stop camera
         self.cameraManager?.stopCamera()
     }
     
     override internal func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
+        //rotate preview
         self.cameraManager!.viewDidLayoutSubviews();
     }
     
     func takePicture(){
+        //take a picture
         self.cameraManager?.takePhoto({ (image) -> Void in
             if image != nil {
                 
@@ -50,9 +56,8 @@ class ViewController: UIViewController{
         })
     }
     
-    
-    
     @IBAction func changeCamera(sender: AnyObject) {
+        //change input camera
         self.cameraManager?.changePositionCamera()
     }
     
